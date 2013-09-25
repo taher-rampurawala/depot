@@ -1,0 +1,35 @@
+<div id="product_list">
+<h1>Listing products</h1>
+
+<table>
+<% @products.each do |products| %>
+<tr class="<%=cycle('list_line_odd', 'list_line_even') %>">
+
+ <td>
+  <%= image_tag(products.image_url, :class => 'list_image') %>
+ </td>
+
+ <td class="list_description">
+  <dl>
+   <dt><%= products.title %></dt>
+    <dd><%= truncate(strip_tags(products.description),
+            :length => 80) %></dd>
+  </dl>
+ </td>
+
+ <td class="list_actions" >
+   <%= link_to 'Show', products %><br/>
+   <%= link_to 'Edit', edit_product_path(products) %><br/>
+   <%= link_to 'Destroy', products,
+               :confirm => 'Are you sure?',
+               :method => :delete %>
+    </td>
+   </tr>
+  <% end %>
+ </table> 
+</div>
+ 
+
+<br />
+
+<%= link_to 'New Product', new_product_path %>
