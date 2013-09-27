@@ -20,8 +20,16 @@
           <% end %>
           <% end %>
         </div>
+        
+        <% unless session[:user_id] %>
+        <%= button_to "Log In", login_url, :method => :get %><br />
+        <% end %>
 
-        <a href="http://www...." >Home</a><br />
+        <% if admin_check %>
+        <%= link_to 'Admin', rails_admin_path %><br />
+        <% end %>
+        
+        <%= link_to 'Home', store_url %><br />
         <a href="http://www..../faq" >Questions</a><br />
         <a href="http://www..../news" >News</a><br />
         <a href="http://www..../contact" >Contact</a><br />

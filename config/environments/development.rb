@@ -7,8 +7,8 @@ Depot::Application.configure do
     :port    => 587,
     :domain  => "domain.of.sender.net",
     :authentication => "plain",
-    :user_name => "dave",
-    :password  => "secret",
+    :user_name => "taherhi8@gmail.com",
+    :password  => "rehat.117.abchigk#*#@$%",
     :enable_starttls_auto => true
 }
 

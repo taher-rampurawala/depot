@@ -1,3 +1,4 @@
+<% if session[:user_id] %>
 <% unless cart.line_items.empty? %>
 <div class="cart_title" >Your Cart</div>
 <table>
@@ -10,11 +11,9 @@
   
 </table>
 
-<%= button_to "Checkout", new_order_path, :method => :get %>
+
+<%= button_to "Checkout", new_order_path, :method => :get %><br />
 <%= button_to 'Empty cart', cart, :method => :delete,
-          :confirm => 'Are you sure?' %>
-<br />
-<% unless session[:user_id] %>
-<%= button_to "Log In", login_url, :method => :get %>
+:confirm => 'Are you sure?' %><br />
 <% end %>
 <% end %>

@@ -5,4 +5,8 @@ module ApplicationHelper
     end
     content_tag("div", attributes, &block)
   end
+
+  def admin_check
+    User.find(session[:user_id]).admin if session[:user_id]
+  end
 end

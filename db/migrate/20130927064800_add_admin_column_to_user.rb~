@@ -1,0 +1,4 @@
+class AddAdminColumnToUser < ActiveRecord::Migration
+  def change
+  end
+end
