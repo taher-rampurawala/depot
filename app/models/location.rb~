@@ -1,0 +1,6 @@
+class Location < ActiveRecord::Base
+  belongs_to :user
+  validates_presence_of :address, :country, :state
+  validates :country, length: { is: 2 }
+  validates :zip_code, length: { is: 6 }, numericality: { only_integer: true }
+end

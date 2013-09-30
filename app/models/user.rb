@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   after_destroy :ensure_an_admin_remains
+  belongs_to :location
+  accepts_nested_attributes_for :location
   validates :name, :presence => true, :uniqueness => true
 
   validates :password, :confirmation => true

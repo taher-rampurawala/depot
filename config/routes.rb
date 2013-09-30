@@ -1,7 +1,6 @@
 Depot::Application.routes.draw do
   mount RailsAdmin::Engine => '/user_admin', :as => 'rails_admin'
   get 'admin' => 'admin#index'
-  get 'user'  => 'user#index'
   controller :sessions do
     get 'login' => :new
     post 'login' => :create

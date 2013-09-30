@@ -1,36 +1,61 @@
 <div class="depot_form" >
-
+  
   <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-      <ul>
+  <div id="error_explanation">
+    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+    
+    <ul>
       <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+      <li><%= msg %></li>
       <% end %>
-      </ul>
-    </div>
+    </ul>
+  </div>
   <% end %>
-
+  
   <fieldset>
     <legend>Enter User Details</legend>
-
+    
     <div class="field">
-    <%= f.label :name %>:
-    <%= f.text_field :name, :size => 40 %>
+      <%= f.label :name, 'Name*' %>:
+      <%= f.text_field :name, :size => 40 %>
     </div>
     <div class="field">
-      <%= f.label :password, 'Password' %>:
+      <%= f.label :password, 'Password*' %>:
       <%= f.password_field :password, :size => 40 %>
     </div>
     <div class="field">
-      <%= f.label :password_confirmation, 'Confirm' %>:
+      <%= f.label :password_confirmation, 'Confirm*' %>:
       <%= f.password_field :password_confirmation, :size => 40 %>
     </div>
+    
+    <%= f.fields_for :location do |loc| %>
+    <div class="field">
+      <%= loc.label :address, 'Address*' %>:
+      <%= loc.text_area :address, :rows => 3, :cols => 40 %>
+    </div>
+    <div class="field">
+      <%= loc.label :country, 'Country*' %>:
+      <%= loc.country_select :country, {priority: %w(US CA IN), prompt: 'Please select a country'} %>
+    </div>
+    <div class="field">
+      <%= loc.label :state, 'State*' %>:
+      <%= loc.subregion_select :state, 'US' ,{ prompt: 'Please select a state'} %>
+    </div>
+    <div class="field">
+      <%= loc.label :city, 'City' %>:
+      <%= loc.text_field :city, size: 20 %>
+    </div>
+    <div class="field">
+      <%= loc.label :zip_code, 'Zip-Code' %>:
+      <%= loc.text_field :zip_code, size: 20 %>
+    </div>
+    <% end %>
+    
     <div class="actions">
       <%= f.submit %>
     </div>
   </fieldset>
+  Fields mark with '*' are mandatory
   <% end %>
 </div>

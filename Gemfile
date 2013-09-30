@@ -45,3 +45,5 @@ end
 gem 'will_paginate', '>= 3.0.pre'
 
 gem 'rails_admin'
+
+gem "carmen-rails", github: 'jim/carmen-rails'
