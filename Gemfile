@@ -18,6 +18,7 @@ gem 'uglifier', '>= 1.3.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -47,3 +48,5 @@ gem 'will_paginate', '>= 3.0.pre'
 gem 'rails_admin'
 
 gem "carmen-rails", github: 'jim/carmen-rails'
+
+gem 'ckeditor_rails'

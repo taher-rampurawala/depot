@@ -9,7 +9,9 @@ Depot::Application.routes.draw do
 
   resources :users
 
-  resources :orders
+  resources :orders do
+    resources :notes, only: [:new, :edit, :create, :update]
+  end
 
   resources :line_items
 

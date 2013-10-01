@@ -1,7 +1,3 @@
-<% if flash[:alert] %>
-<p id="notice" ><%= flash[:alert] %></p>
-<% end %>
-
 <h1>Listing orders</h1>
 
 <table>
@@ -27,8 +23,11 @@
         <td><%= link_to 'Show', order %></td>
         <td><%= link_to 'Edit', edit_order_path(order) %></td>
         <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if order.note %>
         <td><%= link_to 'Add Note',  new_order_note_path(order), method: :get %></td>
-        <td><%= link_to 'Edit Note', edit_order_note_path(order), method: :get %></td>
+        <% else %>
+       <--  <td><%= link_to 'Edit Note', edit_order_note_path(order), method: :get %></td>
+        <% end %>
         </tr>
     <% end %>
   </tbody>

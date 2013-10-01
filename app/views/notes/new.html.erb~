@@ -1,0 +1,5 @@
+<h1> Note </h1>
+
+<div class="depot_form" >
+    <%= render 'form' %>
+</div>
