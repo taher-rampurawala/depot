@@ -50,3 +50,5 @@ gem 'rails_admin'
 gem "carmen-rails", github: 'jim/carmen-rails'
 
 gem 'ckeditor_rails'
+
+gem 'omniauth-facebook'

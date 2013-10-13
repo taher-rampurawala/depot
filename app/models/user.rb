@@ -4,11 +4,11 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :location
   validates :name, :presence => true, :uniqueness => true
 
-  validates :password, :confirmation => true
-  attr_accessor :password_confirmation
-  attr_reader   :password
+ # validates :password, :confirmation => true
+ # attr_accessor :password_confirmation
+ # attr_reader   :password
 
-  validate :password_must_be_present
+ # validate :password_must_be_present
 
   def ensure_an_admin_remains
     if User.count.zero?
@@ -38,13 +38,24 @@ class User < ActiveRecord::Base
   end
 
   private
-
+  
   def password_must_be_present
     errors.add(:password, "Missing password") unless hashed_password.present?
   end
-
+  
   def generate_salt
     self.salt = self.object_id.to_s + rand.to_s
+  end
+
+  def self.from_omniauth(auth)
+    where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
+      user.provider = auth.provider
+      user.uid = auth.uid
+      user.name = auth.info.name
+      user.oauth_token = auth.credentials.token
+      user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+      user.save!
+    end
   end
 end
 
