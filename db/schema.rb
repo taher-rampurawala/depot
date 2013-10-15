@@ -80,9 +80,13 @@ ActiveRecord::Schema.define(version: 20131001051722) do
     t.string   "name"
     t.string   "hashed_password"
     t.string   "salt"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "oauth_token"
+    t.datetime "oauth_expires_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "admin",           default: false
+    t.boolean  "admin",            default: false
     t.integer  "location_id"
   end
 
